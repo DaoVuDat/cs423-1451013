@@ -10,6 +10,9 @@ export class LoginComponent implements OnInit {
     public constructor(public  appService: AppService, public  authService: AuthService, public  router: Router,public  localStorage : LocalStorageService) {}
 
     public ngOnInit() {
+      if ((window as any)._mfq) {
+      (window as any)._mfq.push(['newPageView', '/login']);
+    }
         if (this.localStorage.get('isLoggedIn')) {
             this.authService.current_user = this.localStorage.get('current_user');
             this.authService.token = this.localStorage.get('token').toString();
