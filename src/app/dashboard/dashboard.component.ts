@@ -15,5 +15,8 @@ export class DashboardComponent implements OnInit {
 	public constructor(public  appService: AppService,public  authService: AuthService) {
 	}
 
-	public ngOnInit() {}
+	public ngOnInit() {
+  if ((window as any)._mfq) {
+      (window as any)._mfq.push(['newPageView', '/dashboard']);
+    }}
 }
